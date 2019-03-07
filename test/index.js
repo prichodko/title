@@ -57,13 +57,6 @@ test(t => {
   }), to)
 })
 
-test(t => {
-  const from = "seattle’S BEST coffee & grandma's cookies"
-  const to = "Seattle’s Best Coffee & Grandma's Cookies"
-
-  t.is(title(from), to)
-})
-
 test("should not capitalize word in adjacent parens", t => {
   let from = "employment region(s) for my application"
   let to = "Employment Region(s) for My Application"
@@ -75,5 +68,12 @@ test("should not capitalize word in adjacent parens", t => {
 
   from = "cat(s) can be a pain"
   to = "Cat(s) can Be a Pain"
+  t.is(title(from), to)
+})
+
+test('should leave capitalized words', t => {
+  const from = "seattle’S BEST coffee & grandma's COOKIES"
+  const to = "Seattle’s BEST Coffee & Grandma's COOKIES"
+
   t.is(title(from), to)
 })
